@@ -1,0 +1,46 @@
+Bucur Ionut-Cristian,313CA
+
+#core-aceasta functie este folosita in cadrul taskurile 1:3 si a fost scrisa pentru a nu duplica cod+motive subiective cum ar fi lenea
+     -in cadrul acestui functii am format matricea de adiacenta A a grafului din fisierul dat ca parametru citind din fisier nodul curent si calculand cati vecini are acest nod(scazand referintele catre sine).De asemenea in aceasta etapa am format si matricea K punand numarul de vecini al nodului curent pe diagonala acesteia in pozitia nodului curent
+     -de asemenea,am calculat si valoarea initiala a vectorului R: R0=ones(N,1);R0=R0/N
+     -plus initializat vectorul unu(1),cel plin de 1 	
+
+Task1:#Iterative
+	-folosim core
+	-am calculat matricea M cu formula: M=(K^−1*A)'
+	-am calculat indicele PageRank(vectorul R) folosind formula din cerinta,calculandu-l pana cand s-a atins marja de eroare(eps) dorita 
+
+
+Task2:#ST
+	-rezolva sisteme de forma super triunghiulare
+	-se bazeaza pe algoritmul din laboratorul 2
+
+      #GramSchmidt
+	-foloseste ST
+	-se bazeaza pe algoritmul din laboratorul 3
+	-l-am modificat incat sa calculeze inversa unei matrici folosindu-se de matricile Q R calculate initial;rezolvand sistemul Rx=Ini(unde Ini este o coloana din matricea In) obtinand astfel inversa matricei R;si calculand A^-1=R^-1*Q'
+
+      #Algebraic
+	-folosim core,GramSchmidt
+	-am calculat matricea M cu formula de la Iterative dar am folosit GramSchmidt pentru a calcula inversa
+	-am calculat indicele PageRank(vectorul R) folosind formula din cerinta
+
+
+Task3:#MPD
+	-se bazeaza algoritmul Metodei Puterii Directe din laboratorul 7
+      #Power
+	-foloseste core,MPD
+	-am calculat matricea M cu formula din cerinta
+	-am calculat R0(valoarea initiala a vectorului R) folosind Metoda Puterii directe conform cerintei
+	-am calculat indicele PageRank(vectorul R) folosind formula din cerinta
+
+
+Task4:#Apartenenta
+	-calculeaza valoarea functiei membru in punctul x
+	-valorile a si b din  ramura x>=val1 && x<=val2 au fost calculate in urma unor calcule intense pe hartie
+      #SelectionSort
+	-este o simpla sortare descrescatoare prin selectie ce are adaugat suplimentar un vector y ce retine initial pozitiile(1:n),asupra caruia se aplica aceleasi operatii ca asupra vectorului sortat si implicit va rezulta clasamentul PageRankului paginilor vizate
+      #PageRank
+	-foloseste core,SelectionSort,Apartenenta
+	-apelam functiile Iterative,Algebraic si Power si pentru fiecare scriem in fisierul de output blocurile(vectorii) returnati de acestia
+	-extragem si cele doua valori(val1 si val2);sortam vectorul R2 returnat de al 2lea algoritm folosind SelectionSort,care returneaza si vectorul corespondend nodurilor;trecem acest vector sortat prin Apartenenta si scriem clasamentul final in fisierul de out
